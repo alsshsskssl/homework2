@@ -11,35 +11,18 @@ public class day_oop{
 	}
 	public String calc_day_name(){
 		int temp = 0;
-		if(year>=2020){
-			for(int i=2020;i<year;i++){
-				if(is_yoon(i)==1){
-					temp+=366;
-				}else{
-					temp+=365;
-				}
+		for(int i=0;i<year;i++){
+			if(is_yoon(i)==1){
+				temp+=366;
+			}else{
+				temp+=365;
 			}
-			for(int i=1;i<month;i++){
-				temp += calc_day_cnt(year,i);
-			}
-			temp += day-1+3;
-			temp = temp%7;
-		}else{
-			for(int i=year;i<2020-1;i++){
-				if(is_yoon(i)==1){
-					temp+=366;
-				}else{
-					temp+=365;
-				}
-			}
-			int day_temp = 0;
-			for(int i=1;i<month;i++){
-				day_temp += calc_day_cnt(2019,i);
-			}
-			temp += (365-day_temp);
-			temp += (calc_day_cnt(2019,month)-day+3);
-			temp = temp%7;
 		}
+		for(int i=1;i<month;i++){
+			temp += calc_day_cnt(year,i);
+		}
+		temp += day+5;
+		temp = temp%7;
 
 		return output_day(temp);
 	}
